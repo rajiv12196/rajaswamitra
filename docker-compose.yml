@@ -1,0 +1,26 @@
+# Office server deployment: AI model + app, all on your own hardware.
+#   docker compose up -d
+#   docker compose exec ollama ollama pull qwen2.5:7b
+# Then open http://<server-ip>:8501 from any office PC.
+services:
+  ollama:
+    image: ollama/ollama:latest
+    volumes: [ollama:/root/.ollama]
+    restart: unless-stopped
+    # For an NVIDIA GPU, uncomment:
+    # deploy: {resources: {reservations: {devices: [{driver: nvidia, count: all, capabilities: [gpu]}]}}}
+  app:
+    build: .
+    ports: ["8501:8501"]
+    environment:
+      RM_PROVIDER: ollama
+      RM_BASE_URL: http://ollama:11434
+      RM_MODEL: qwen2.5:7b
+    volumes:
+      - ./knowledge_base:/app/knowledge_base
+      - ./config:/app/config
+      - ./data:/app/data
+    depends_on: [ollama]
+    restart: unless-stopped
+volumes:
+  ollama:
