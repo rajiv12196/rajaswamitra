@@ -1,0 +1,40 @@
+{
+  "_note": "Editable rate tables. VERIFY against the official Finance Act / notifications before use. Amounts in rupees. Budget 2026 kept slabs unchanged for FY 2026-27; the Income-tax Act, 2025 applies from 1 April 2026 (tax year 2026-27 onwards). FY 2025-26 and earlier remain under the Income-tax Act, 1961.",
+  "income_tax": {
+    "2025-26": {
+      "law": "Income-tax Act, 1961",
+      "new_regime": {
+        "slabs": [[400000, 0.0], [800000, 0.05], [1200000, 0.10], [1600000, 0.15], [2000000, 0.20], [2400000, 0.25], [null, 0.30]],
+        "standard_deduction_salary": 75000,
+        "rebate_income_limit": 1200000,
+        "rebate_max": 60000,
+        "rebate_marginal_relief": true,
+        "surcharge": [[5000000, 0.10], [10000000, 0.15], [20000000, 0.25]]
+      },
+      "old_regime": {
+        "basic_exemption": {"below_60": 250000, "60_to_80": 300000, "above_80": 500000},
+        "slabs_above_exemption": [[500000, 0.05], [1000000, 0.20], [null, 0.30]],
+        "standard_deduction_salary": 50000,
+        "rebate_income_limit": 500000,
+        "rebate_max": 12500,
+        "surcharge": [[5000000, 0.10], [10000000, 0.15], [20000000, 0.25], [50000000, 0.37]]
+      },
+      "cess": 0.04
+    },
+    "2026-27": {
+      "law": "Income-tax Act, 2025 (rates unchanged by Budget 2026 - verify)",
+      "same_as": "2025-26"
+    }
+  },
+  "interest": {
+    "income_tax_monthly_rate": 0.01,
+    "advance_tax_schedule": [
+      {"due": "06-15", "cumulative_pct": 0.15, "months": 3, "safe_harbour_pct": 0.12},
+      {"due": "09-15", "cumulative_pct": 0.45, "months": 3, "safe_harbour_pct": 0.36},
+      {"due": "12-15", "cumulative_pct": 0.75, "months": 3, "safe_harbour_pct": null},
+      {"due": "03-15", "cumulative_pct": 1.00, "months": 1, "safe_harbour_pct": null}
+    ],
+    "gst_s50_annual_rate": 0.18,
+    "gst_s50_wrong_itc_annual_rate": 0.18
+  }
+}
